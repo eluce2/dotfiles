@@ -1,0 +1,1 @@
+export SSH_AUTH_SOCK=~/Library/Containers/org.hejki.osx.sshce.agent/Data/socket.ssh
