@@ -6,5 +6,7 @@
 	editor = code
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	program = ssh-keygen
 [commit]
 	gpgsign = true
