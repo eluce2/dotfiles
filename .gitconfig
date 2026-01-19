@@ -1,5 +1,10 @@
 [user]
 	name = Eric Luce
 	email = 37158449+eluce2@users.noreply.github.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4mkttjpEMgYj6Ur/hnnuXvJGhxg+J11cK5APSOEoScxYU/lHEHtkPBgKzJ+ZxoMeZelZOpknHOIzrcScFP2Imivmx7sqiFgULLiXClBPBZKeEsaV6AQwCu/6EsySPuWWsCafYSqiXW6fuO/SxrfpTrNGzUU8x9tMViB2rjiBNmR3fKyzQQx63O40gi6Z+RLZGpIV0QBnl56bhaRjCkR98M4BEmlM/w15EkVa1rMTHyLh/vAG03E7e48TL9hhXJdlD5AsnAWPMDAXivHhiWJ5OXEADBUmzpXWbChqUFFCD6N3A1cgyIQiIJmxPP29PGZg6WaM8SN+lqVrYNXNhMTNMMktxtD5WVfzPiXm/mbGoIMRaHhyzKBBW0oUT8OAJHT7XYe9XenPigceEj0HDSzxuBPvLljJXVJcsPYRvzKd1B44qKI3CCl8v1KRxjPBIn9z8CXq+PmmCx//Yw/VuavNFnbag3GVrQfKxFa7NgI42MHC1K083U7WcNanZ+pCLhQc=
 [core]
 	editor = code
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
