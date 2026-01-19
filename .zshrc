@@ -11,12 +11,11 @@ source ~/Repos/znap/znap.zsh
 # Plugins
 znap source marlonrichert/zsh-autocomplete
 znap source grigorii-zander/zsh-npm-scripts-autocomplete
-znap source zsh-syntax-highlighting
+znap source zsh-users/zsh-syntax-highlighting
 znap source "MichaelAquilina/zsh-you-should-use"
 znap source mafredri/zsh-async
 znap source "sindresorhus/pure"
-znap source zsh-doppler
-znap source fzf-tab
+znap source Aloxaf/fzf-tab
 
 # History
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
