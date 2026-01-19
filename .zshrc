@@ -1,4 +1,13 @@
-export SSH_AUTH_SOCK=~/Library/Containers/org.hejki.osx.sshce.agent/Data/socket.ssh
+
+# Znap plugin manager
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh
+
+# Plugins
+znap source marlonrichert/zsh-autocomplete
+znap source grigorii-zander/zsh-npm-scripts-autocomplete
+
 # History
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
@@ -21,10 +30,4 @@ unsetopt flow_control
 # Other
 setopt prompt_subst
 
-# Plugins
-source /opt/homebrew/share/antigen/antigen.zsh
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-# Apply Antigen
-antigen apply
+alias clauded="claude --dangerously-skip-permissions"
