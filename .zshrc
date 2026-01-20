@@ -1,4 +1,4 @@
-# 1Password SSH agent (macOS only - containers use forwarded agent)
+# 1Password SSH agent
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 fi
@@ -14,7 +14,6 @@ znap source grigorii-zander/zsh-npm-scripts-autocomplete
 znap source zsh-users/zsh-syntax-highlighting
 znap source "MichaelAquilina/zsh-you-should-use"
 znap source mafredri/zsh-async
-znap source "sindresorhus/pure"
 znap source Aloxaf/fzf-tab
 
 # History
@@ -32,24 +31,35 @@ setopt hist_find_no_dups
 setopt hist_expire_dups_first
 setopt inc_append_history
 
-
 # Changing directories
 setopt auto_cd
 setopt auto_pushd
 unsetopt pushd_ignore_dups
 setopt pushdminus
+
 # Completion
 setopt auto_menu
 setopt always_to_end
 setopt complete_in_word
 unsetopt flow_control
+
 # Other
 setopt prompt_subst
 
+# Aliases
 alias clauded="claude --dangerously-skip-permissions"
 alias ls="ls --color"
 
-
+# Starship prompt
 eval "$(starship init zsh)"
 
+# Transient prompt - collapse to minimal after command runs
+function transient-prompt() {
+  PROMPT=$'\n'"$(starship module character)"
+  zle reset-prompt
+}
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget zle-line-finish transient-prompt
 
+# Load machine-specific config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

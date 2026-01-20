@@ -1,0 +1,71 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """${custom.doppler_prod}\
+${custom.doppler}\
+$username\
+$hostname\
+$git_branch\
+$git_state\
+$git_status\
+$line_break\
+$python\
+$directory\
+$character"""
+
+right_format = "$cmd_duration"
+
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+style = "blue"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+detect_extensions = []
+detect_files = []
+
+[custom.doppler_prod]
+command = "doppler configure --json 2>/dev/null | jq -r --arg pwd \"$PWD\" '.[$pwd][\"enclave.config\"] // empty'"
+when = "doppler configure --json 2>/dev/null | jq -r --arg pwd \"$PWD\" '.[$pwd][\"enclave.config\"] // empty' | grep -qE '^(prd|prod)'"
+format = "[✦ $output ]($style) "
+style = "bold white bg:red"
+ignore_timeout = true
+
+[custom.doppler]
+command = "doppler configure --json 2>/dev/null | jq -r --arg pwd \"$PWD\" '.[$pwd][\"enclave.config\"] // empty'"
+when = "doppler configure --json 2>/dev/null | jq -r --arg pwd \"$PWD\" '.[$pwd][\"enclave.config\"] // empty' | grep -vqE '^(prd|prod)' && doppler configure --json 2>/dev/null | jq -e --arg pwd \"$PWD\" '.[$pwd][\"enclave.config\"]' >/dev/null 2>&1"
+format = "[✦ $output]($style) "
+style = "cyan"
+ignore_timeout = true

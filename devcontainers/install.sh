@@ -2,7 +2,6 @@
 set -e
 
 curl -sS https://starship.rs/install.sh | sh -s -- -y
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
 
