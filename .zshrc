@@ -50,16 +50,8 @@ setopt prompt_subst
 alias clauded="claude --dangerously-skip-permissions"
 alias ls="ls --color"
 
-# Starship prompt
-eval "$(starship init zsh)"
-
-# Transient prompt - collapse to minimal after command runs
-function transient-prompt() {
-  PROMPT=$'\n'"$(starship module character)"
-  zle reset-prompt
-}
-autoload -Uz add-zle-hook-widget
-add-zle-hook-widget zle-line-finish transient-prompt
+# Oh My Posh prompt
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.json)"
 
 # Load machine-specific config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
