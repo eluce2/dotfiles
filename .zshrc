@@ -50,16 +50,6 @@ alias clauded="claude --dangerously-skip-permissions"
 alias ls="ls --color"
 
 
-# Prompt (robbyrussell-style)
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{blue}git:(%F{red}%b%F{blue})%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{blue}git:(%F{red}%b|%a%F{blue})%f'
-
-git_dirty() {
-  [[ -n $(git status --porcelain 2>/dev/null) ]] && echo " %F{yellow}✗%f"
-}
-
-PROMPT='%F{green}➜%f %F{cyan}%c%f${vcs_info_msg_0_}$(git_dirty) '
+eval "$(starship init zsh)"
 
 
